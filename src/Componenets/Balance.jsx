@@ -9,14 +9,15 @@ const BalanceText = styled(Typography)`
 `
 
 
-const Balance= ()=>{
+const Balance= ({transactions})=>{
 
-
+const amount = transactions.map(transactions => transactions.Amount);
+const total = amount.reduce((amount,item)=>(amount+=item),0).toFixed(2)
 
     return(
      <Box>
 
-<Typography>Balance : 100</Typography>
+<Typography>Balance:{total}.PKR</Typography>
      </Box>
 
 

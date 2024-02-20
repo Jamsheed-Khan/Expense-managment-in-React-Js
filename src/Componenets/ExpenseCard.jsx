@@ -1,15 +1,28 @@
-import { Box , Card, Typography,CardContent } from "@mui/material"
+import { Box , Card, Typography,CardContent,styled } from "@mui/material"
+const Container = styled(Box)`
+  display:flex;
+  & > div{
+    flex:1;
+    padding:10px;
+  }
+`
+
+const ExpenseCard = ({transactions})=> {
 
 
-const ExpenseCard = ()=> {
+  const amount = transactions.map(transactions => transactions.Amount);
+  const income = amount.filter(item=>item>0).reduce((acc,item)=>(acc+=item),0).toFixed(2)
+  const expense = (amount.filter(item=>item<0).reduce((acc,item)=>(acc+=item),0)*-1).toFixed(2)
+
+
   return (
-    <Box>
+    <Container>
         <Card>
             <CardContent>
                 <Typography>
                     Income:
                 </Typography>
-                <Typography style={{color:'green'}}>25</Typography>
+                <Typography style={{color:'green'}}>{income}.PKR</Typography>
 
             </CardContent>
         </Card>
@@ -19,12 +32,12 @@ const ExpenseCard = ()=> {
                 <Typography>
                     Expense:
                 </Typography>
-                <Typography style={{color:'red'}}>15</Typography>
+                <Typography style={{color:'red'}}>{expense}.PKR</Typography>
 
             </CardContent>
         </Card>
 
-    </Box>
+    </Container>
   )
 }
 
