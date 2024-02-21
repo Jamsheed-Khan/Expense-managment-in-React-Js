@@ -61,7 +61,7 @@ const [transactions,setTransactions] = useState([
         <NewTransactions  setTransactions={setTransactions} />
        </Box>
        <Box>
-        <Transactions transactions={transactions}/>
+        <Transactions transactions={transactions} setTransactions={setTransactions}/>
        </Box>
     </Component>
     </Box>

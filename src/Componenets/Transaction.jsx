@@ -1,4 +1,6 @@
-import { ListItem, ListItemText,styled } from "@mui/material"
+import { ListItem, ListItemText, ListItemIcon, styled } from "@mui/material"
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 const Detail = styled(ListItem)`
  margin-top:10px;
@@ -8,14 +10,21 @@ const Detail = styled(ListItem)`
 
 
 
-const Transaction = ({transaction}) => {
-  const color = transaction.Amount > 0 ? 'Green':'Red'
+const Transaction = ({ transaction, setTransactions, Transactions }) => {
+  const color = transaction.Amount > 0 ? 'Green' : 'Red'
 
+
+  const deleteTransaction = (id) => {
+    setTransactions(Transactions.filter(transaction => transaction.id !== id))
+  }
 
 
 
   return (
-    <Detail style={{background:`${color} `,color:'#fff'}}>
+    <Detail style={{ background: `${color} `, color: '#fff' }}>
+      <ListItemIcon>
+        <DeleteIcon onClick={() => deleteTransaction(transaction.id)} />
+      </ListItemIcon>
       <ListItemText>
         {
           transaction.text

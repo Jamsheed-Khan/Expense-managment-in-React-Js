@@ -25,7 +25,7 @@ const AddTransaction =()=>{
   const transaction = {
     id:Math.floor(Math.random()*10000000),
     text:text,
-    amount: +amount
+    amount:+amount
 
   }
   setTransactions(prevState => [transaction,...prevState])

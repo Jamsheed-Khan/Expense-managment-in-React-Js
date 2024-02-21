@@ -6,7 +6,7 @@ import Transaction from "./Transaction"
 
 
 
-const Transactions=({transactions})=> {
+const Transactions=({transactions,setTransactions})=> {
   return (
    <Box>
     <Typography variant="h5">Transactions History</Typography>
@@ -14,7 +14,7 @@ const Transactions=({transactions})=> {
    <List>
       {
         transactions.map(transactions=>(
-            <Transaction transaction={transactions}/>
+            <Transaction transaction={transactions} setTransactions={setTransactions} transactions={transactions}/>
         ))
       }
    </List>
